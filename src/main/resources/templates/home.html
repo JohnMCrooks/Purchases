@@ -43,14 +43,15 @@
     </tr>
 </table>
 
-<table border="1">
-    <tr>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Category</td>
-        <td>Credit Card</td>
-        <td>CVV</td>
-        <td>Date</td>
+<table >
+    <tr align="center" style='text:bold'><b>
+        <td><b>Name</b></td>
+        <td><b>Email</b></td>
+        <td><b>Category</b></td>
+        <td><b>Credit Card</b></td>
+        <td><b>CVV</b></td>
+        <td><b>Date</b></td>
+
     </tr>
 
     {{#customers}}
@@ -63,7 +64,7 @@
          </tr>
         {{#purchaseList}}
             <tr>
-                <td colspan="2" align="center">Recently Purchased:</td>
+                <td colspan="2" align="right"><b>Purchased:</b></td>
                 <td>{{category}}</td>
                 <td>{{credit_card}}</td>
                 <td>{{cvv}}</td>
