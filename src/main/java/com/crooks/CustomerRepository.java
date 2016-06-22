@@ -10,4 +10,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by johncrooks on 6/22/16.
  */
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {
+    public Iterable<Customer> findByNameContainingIgnoreCase (String name);
 }

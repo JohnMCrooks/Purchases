@@ -9,13 +9,39 @@
     <title>Home</title>
 </head>
 <body>
-<a href="/">All</a>
-<a href="/?category=Furniture">Furniture</a>
-<a href="/?category=Alcohol">Alcohol</a>
-<a href="/?category=Toiletries">Toiletries</a>
-<a href="/?category=Shoes">Shoes</a>
-<a href="/?category=Food">Food</a>
-<a href="/?category=Jewelry">Jewelry</a>
+<table>
+    <tr>
+        <td>
+            <a href="/">All</a>
+        </td>
+            <td>
+            <a href="/?category=Furniture">Furniture</a>
+        </td>
+            <td>
+            <a href="/?category=Alcohol">Alcohol</a>
+        </td>
+            <td>
+            <a href="/?category=Toiletries">Toiletries</a>
+        </td>
+            <td>
+            <a href="/?category=Shoes">Shoes</a>
+        </td>
+            <td>
+            <a href="/?category=Food">Food</a>
+        </td>
+            <td>
+            <a href="/?category=Jewelry">Jewelry</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/" method="get">
+            <input type="text" name="nameSearch" placeholder="Search by Name" />
+            <button type="submit">Submit</button>
+            </form>
+        </td>
+    </tr>
+</table>
 
 <table border="1">
     <tr>
@@ -26,6 +52,26 @@
         <td>CVV</td>
         <td>Date</td>
     </tr>
+
+    {{#customers}}
+         <tr>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            {{^purchaseList}}
+                <td colspan="4" align="center"> No Purchases Recently</td>
+            {{/purchaseList}}
+         </tr>
+        {{#purchaseList}}
+            <tr>
+                <td colspan="2" align="center">Recently Purchased:</td>
+                <td>{{category}}</td>
+                <td>{{credit_card}}</td>
+                <td>{{cvv}}</td>
+                <td>{{date}}</td>
+            </tr>
+        {{/purchaseList}}
+    {{/customers}}
+
 
     {{#purchases}}
         <tr>

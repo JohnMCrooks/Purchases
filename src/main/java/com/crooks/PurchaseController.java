@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.Scanner;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
@@ -55,15 +56,26 @@ public class PurchaseController {
     }
 
     @RequestMapping(path="/", method= RequestMethod.GET)
-    public String home(HttpSession session, Model model, String category){
-        Iterable<Purchase> p;
-        if (category!=null){
-            p = purchases.findByCategory(category);
-        }else {
-            p= purchases.findAll();
-        }
+    public String home(HttpSession session, Model model, String category, String nameSearch){
+        Iterable<Purchase> p=null;
+
+        Iterable<Customer> c=null;
+
+        if (nameSearch !=null){
+            c= customers.findByNameContainingIgnoreCase(nameSearch);
+
+        } else if (nameSearch==null && category!=null){
+                p = purchases.findByCategory(category);
+            }else if (nameSearch==null && category==null){
+                p = purchases.findAll();
+            }else{
+            }
+
+
+
 
         model.addAttribute("purchases", p);
+        model.addAttribute("customers", c);
         return "home";
     }
 }

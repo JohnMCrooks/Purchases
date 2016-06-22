@@ -4,10 +4,8 @@
 
 package com.crooks;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by johncrooks on 6/22/16.
@@ -21,6 +19,9 @@ public class Customer {
 
     String name;
     String email;
+
+    @OneToMany(mappedBy = "customer")
+    List<Purchase> purchaseList;
 
     public Customer(int id, String name, String email) {
         this.id = id;
